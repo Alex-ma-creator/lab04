@@ -52,7 +52,6 @@ fun MovieCounter(modifier: Modifier = Modifier) {
             Text("Add Movie")
         }
 
-
         // ========== CARD ==========
         Spacer(modifier = Modifier.height(16.dp))
         Card(
@@ -66,6 +65,20 @@ fun MovieCounter(modifier: Modifier = Modifier) {
                 modifier = Modifier.padding(16.dp)
             )
         }
+
+        // ========== CHIP (AGREGAR AQUÍ) ==========
+
+        Spacer(modifier = Modifier.height(16.dp))
+        Chip(
+            onClick = { },
+            colors = ChipDefaults.chipColors(
+                containerColor = MaterialTheme.colorScheme.tertiaryContainer
+            ),
+            border = ChipDefaults.outlinedChipBorder()
+        ) {
+            Text(" Categoría: Acción ")
+        }
+
     }
 }
 

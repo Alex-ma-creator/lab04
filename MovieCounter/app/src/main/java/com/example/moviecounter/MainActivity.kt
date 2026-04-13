@@ -1,6 +1,6 @@
 package com.example.moviecounter
 
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.material3.SwitchDefaults
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,6 +30,7 @@ class MainActivity : ComponentActivity() {
 fun MovieCounter(modifier: Modifier = Modifier) {
     var count by rememberSaveable { mutableStateOf(0) }
     var movieName by rememberSaveable { mutableStateOf("") }
+    var isWatched by remember { mutableStateOf(false) }  
 
     Column(
         modifier = modifier.padding(16.dp),
@@ -61,24 +62,39 @@ fun MovieCounter(modifier: Modifier = Modifier) {
             )
         ) {
             Text(
-                text = "🎬 Recomendación: Inception",
+                text = "Recomendación: Inception",
                 modifier = Modifier.padding(16.dp)
             )
         }
 
-        // ========== CHIP (AGREGAR AQUÍ) ==========
+        // ========== SWITCH ==========
+        Spacer(modifier = Modifier.height(16.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text("Marcar como vista")
+            Switch(
+                checked = isWatched,
+                onCheckedChange = { isWatched = it },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                    checkedTrackColor = MaterialTheme.colorScheme.primaryContainer
+                )
+            )
+        }
 
+        // ========== CHIP ==========
         Spacer(modifier = Modifier.height(16.dp))
         Chip(
             onClick = { },
             colors = ChipDefaults.chipColors(
-                containerColor = MaterialTheme.colorScheme.tertiaryContainer
-            ),
-            border = ChipDefaults.outlinedChipBorder()
+                containerColor = MaterialTheme.colorScheme.secondaryContainer
+            )
         ) {
-            Text(" Categoría: Acción ")
+            Text("Categoría: Acción")
         }
-
     }
 }
 

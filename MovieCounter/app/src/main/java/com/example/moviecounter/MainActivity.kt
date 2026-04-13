@@ -1,5 +1,6 @@
 package com.example.moviecounter
 
+import androidx.compose.runtime.mutableStateOf
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -53,15 +54,16 @@ fun MovieCounter(modifier: Modifier = Modifier) {
 
 
         Spacer(modifier = Modifier.height(16.dp))
-        Card(
+        var isWatched by remember { mutableStateOf(false) }
+        Row(
             modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.primaryContainer
-            )
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = "🎬 Recomendación: Inception",
-                modifier = Modifier.padding(16.dp)
+            Text("Marcar como vista")
+            Switch(
+                checked = isWatched,
+                onCheckedChange = { isWatched = it }
             )
         }
     }

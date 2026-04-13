@@ -53,17 +53,17 @@ fun MovieCounter(modifier: Modifier = Modifier) {
         }
 
 
+        // ========== CARD ==========
         Spacer(modifier = Modifier.height(16.dp))
-        var isWatched by remember { mutableStateOf(false) }
-        Row(
+        Card(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer
+            )
         ) {
-            Text("Marcar como vista")
-            Switch(
-                checked = isWatched,
-                onCheckedChange = { isWatched = it }
+            Text(
+                text = "🎬 Recomendación: Inception",
+                modifier = Modifier.padding(16.dp)
             )
         }
     }
